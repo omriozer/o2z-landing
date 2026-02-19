@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O2Z">
+    <title>O2Z</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Loading screen -->
+    <div id="loading-screen">
+        <canvas id="intro-canvas"></canvas>
+    </div>
+
+    <nav>
+        <img src="/logo.svg" alt="O2Z" class="logo">
+        <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <main>
+        <section class="presence">
+            <h1>
+                <span>From Oh to Zee</span>
+                <span class="gradient">We Dream</span>
+                <span>We Build<span class="gradient period">.</span></span>
+            </h1>
+        </section>
+
+        <section class="manifestation">
+            <div class="project">
+                <h2>Ludora</h2>
+                <a href="https://ludora.app/" target="_blank" rel="noopener">→</a>
+            </div>
+        </section>
+
+        <section class="connection">
+            <a href="mailto:omri@o2z.tech" class="contact">omri@o2z.tech</a>
+            <a href="https://linkedin.com/in/omriozer" target="_blank" rel="noopener" class="contact">LinkedIn</a>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2023 O2Z</span>
+        <span>·</span>
+        <span>Omri Ozer</span>
+    </footer>
+
+    <script src="/intro-v2.js"></script>
+    <script src="/stars.js"></script>
+    <script src="/script.js"></script>
+</body>
+</html>

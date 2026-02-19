@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O2Z - A technology playground where innovation pushes the limits. Making Dreams Code True.">
+    <meta name="author" content="Omri Ozer">
+    <meta name="keywords" content="O2Z, technology, innovation, software development, Ludora">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://o2z.tech/">
+    <meta property="og:title" content="O2Z | Making Dreams Code True">
+    <meta property="og:description" content="A technology playground where innovation pushes the limits. Exploring. Engineering. Evolving.">
+    <meta property="og:image" content="https://o2z.tech/logo.svg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://o2z.tech/">
+    <meta property="twitter:title" content="O2Z | Making Dreams Code True">
+    <meta property="twitter:description" content="A technology playground where innovation pushes the limits. Exploring. Engineering. Evolving.">
+    <meta property="twitter:image" content="https://o2z.tech/logo.svg">
+
+    <title>O2Z | Making Dreams Code True</title>
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        :root {
+            --bg-color: #0a0a0b;
+            --accent-color: #00f2ff;
+            --text-color: #ffffff;
+            --secondary-glow: rgba(0, 242, 255, 0.5);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: var(--bg-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+        }
+
+        /* רקע החלקיקים */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* תוכן מרכזי */
+        .main-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            pointer-events: none; /* מאפשר לעכבר לעבור לחלקיקים */
+        }
+
+
+        .logo-container {
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px var(--secondary-glow));
+            pointer-events: auto;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.08) translateY(-5px);
+            filter: drop-shadow(0 0 25px rgba(0, 242, 255, 0.8));
+        }
+
+        .logo-container:active {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .slogan {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-top: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            border-right: 3px solid var(--accent-color);
+            padding-left: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            animation: typing 3s steps(30, end) forwards, blink 0.8s infinite;
+            pointer-events: auto;
+        }
+
+        .tagline {
+            margin-top: 40px;
+            font-size: 1rem;
+            opacity: 0.6;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        /* Projects section */
+        .projects {
+            margin-top: 60px;
+            pointer-events: auto;
+        }
+
+        .projects-title {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .project-link {
+            display: inline-block;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 30px;
+            border: 2px solid var(--accent-color);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(0, 242, 255, 0.05);
+        }
+
+        .project-link:hover {
+            background: rgba(0, 242, 255, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.3);
+        }
+
+        /* Contact section */
+        .contact {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            pointer-events: auto;
+        }
+
+        .contact-title {
+            font-size: 0.7rem;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .contact a {
+            font-size: 1.4rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            padding-bottom: 3px;
+            display: inline-block;
+        }
+
+        .contact a:hover {
+            border-bottom: 2px solid var(--accent-color);
+            letter-spacing: 1px;
+            transform: translateY(-2px);
+        }
+
+        /* פוטר מינימליסטי */
+        .footer {
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #3a3a3a;
+            letter-spacing: 0.5px;
+        }
+
+        .footer .separator {
+            margin: 0 12px;
+            opacity: 0.3;
+        }
+
+        /* אנימציות */
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color) }
+        }
+
+        /* מובייל */
+        @media (max-width: 768px) {
+            .main-container {
+                padding-top: 40px;
+            }
+
+            .logo-img {
+                max-width: 180px;
+            }
+
+            .logo-container {
+                margin-bottom: 1.5rem;
+            }
+
+            .slogan {
+                font-size: 1rem;
+                padding-left: 10px;
+            }
+
+            .tagline {
+                font-size: 0.85rem;
+                margin-top: 25px;
+                padding: 0 20px;
+                max-width: 90%;
+                line-height: 1.5;
+            }
+
+            .projects {
+                margin-top: 40px;
+            }
+
+            .projects-title {
+                font-size: 0.75rem;
+                margin-bottom: 15px;
+            }
+
+            .project-link {
+                font-size: 1rem;
+                padding: 10px 24px;
+            }
+
+            .contact {
+                margin-top: 40px;
+                margin-bottom: 30px;
+            }
+
+            .contact-title {
+                font-size: 0.65rem;
+                letter-spacing: 2px;
+                margin-bottom: 12px;
+            }
+
+            .contact a {
+                font-size: 1.1rem;
+            }
+
+            .footer {
+                font-size: 0.8rem;
+                bottom: 20px;
+                padding: 0 20px;
+                color: #666;
+            }
+
+            .footer .separator {
+                margin: 0 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-container {
+                padding-top: 30px;
+            }
+
+            .logo-img {
+                max-width: 160px;
+            }
+
+            .slogan {
+                font-size: 0.9rem;
+            }
+
+            .tagline {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .projects {
+                margin-top: 35px;
+            }
+
+            .project-link {
+                font-size: 0.95rem;
+                padding: 9px 22px;
+            }
+
+            .contact {
+                margin-top: 35px;
+            }
+
+            .contact a {
+                font-size: 1rem;
+            }
+
+            .footer {
+                font-size: 0.75rem;
+                bottom: 18px;
+                color: #666;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="particles-js"></div>
+
+    <div class="main-container">
+        <div class="logo-container">
+            <img src="logo.svg" alt="O2Z Logo" class="logo-img">
+        </div>
+
+        <div style="pointer-events: auto;">
+            <div class="slogan">Making Dreams Code True.</div>
+        </div>
+
+        <p class="tagline">
+            A technology playground where innovation pushes the limits. <br>
+            Exploring. Engineering. Evolving.
+        </p>
+
+        <div class="projects">
+            <div class="projects-title">Products</div>
+            <a href="https://ludora.app/" target="_blank" rel="noopener" class="project-link">Ludora</a>
+        </div>
+
+        <div class="contact">
+            <div class="contact-title">Get in touch</div>
+            <a href="mailto:info@o2z.tech">info@o2z.tech</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        © 2025 O2Z <span class="separator">·</span> Omri Ozer
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#00f2ff" },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00f2ff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" },
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 200, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
