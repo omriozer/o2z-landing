@@ -50,7 +50,7 @@
 
         /* רקע החלקיקים */
         #particles-js {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             z-index: 1;
@@ -62,16 +62,34 @@
             z-index: 2;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 100dvh;
             text-align: center;
-            pointer-events: none; /* מאפשר לעכבר לעבור לחלקיקים */
+            pointer-events: none;
         }
 
+        /* Logo zone — top 1/3 */
+        .logo-zone {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 30%;
+            flex-shrink: 0;
+        }
+
+        /* Content zone — remaining space */
+        .content-zone {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            justify-content: space-evenly;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
 
         .logo-container {
-            margin-bottom: 2rem;
             filter: drop-shadow(0 0 15px var(--secondary-glow));
             pointer-events: auto;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -115,16 +133,16 @@
         }
 
         .tagline {
-            margin-top: 40px;
-            font-size: 1rem;
-            opacity: 0.6;
+            margin-top: 0;
+            font-size: 1.05rem;
+            opacity: 0.8;
             max-width: 500px;
             line-height: 1.6;
+            text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
         }
 
         /* Projects section */
         .projects {
-            margin-top: 60px;
             pointer-events: auto;
         }
 
@@ -133,8 +151,8 @@
             color: var(--accent-color);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
-            opacity: 0.8;
+            margin-bottom: 15px;
+            opacity: 1;
         }
 
         .project-link {
@@ -157,17 +175,15 @@
 
         /* Contact section */
         .contact {
-            margin-top: 100px;
-            margin-bottom: 100px;
             pointer-events: auto;
         }
 
         .contact-title {
-            font-size: 0.7rem;
-            color: #555;
+            font-size: 0.75rem;
+            color: #888;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 500;
         }
 
@@ -189,15 +205,13 @@
 
         /* פוטר מינימליסטי */
         .footer {
-            position: fixed;
-            bottom: 25px;
-            left: 0;
-            right: 0;
-            z-index: 3;
+            padding: 10px 0 15px;
             text-align: center;
             font-size: 0.8rem;
-            color: #3a3a3a;
+            color: #555;
             letter-spacing: 0.5px;
+            pointer-events: auto;
+            flex-shrink: 0;
         }
 
         .footer .separator {
@@ -218,16 +232,12 @@
 
         /* מובייל */
         @media (max-width: 768px) {
-            .main-container {
-                padding-top: 40px;
+            .logo-zone {
+                height: 25%;
             }
 
             .logo-img {
-                max-width: 180px;
-            }
-
-            .logo-container {
-                margin-bottom: 1.5rem;
+                max-width: 150px;
             }
 
             .slogan {
@@ -236,20 +246,15 @@
             }
 
             .tagline {
-                font-size: 0.85rem;
-                margin-top: 25px;
-                padding: 0 20px;
+                font-size: 0.9rem;
                 max-width: 90%;
                 line-height: 1.5;
-            }
-
-            .projects {
-                margin-top: 40px;
+                text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
             }
 
             .projects-title {
-                font-size: 0.75rem;
-                margin-bottom: 15px;
+                font-size: 0.8rem;
+                margin-bottom: 12px;
             }
 
             .project-link {
@@ -257,15 +262,10 @@
                 padding: 10px 24px;
             }
 
-            .contact {
-                margin-top: 40px;
-                margin-bottom: 30px;
-            }
-
             .contact-title {
-                font-size: 0.65rem;
+                font-size: 0.7rem;
                 letter-spacing: 2px;
-                margin-bottom: 12px;
+                margin-bottom: 10px;
             }
 
             .contact a {
@@ -273,9 +273,8 @@
             }
 
             .footer {
-                font-size: 0.8rem;
-                bottom: 20px;
-                padding: 0 20px;
+                font-size: 0.75rem;
+                padding: 12px 0 20px;
                 color: #666;
             }
 
@@ -285,12 +284,12 @@
         }
 
         @media (max-width: 480px) {
-            .main-container {
-                padding-top: 30px;
+            .logo-zone {
+                height: 22%;
             }
 
             .logo-img {
-                max-width: 160px;
+                max-width: 130px;
             }
 
             .slogan {
@@ -298,12 +297,7 @@
             }
 
             .tagline {
-                font-size: 0.8rem;
-                line-height: 1.5;
-            }
-
-            .projects {
-                margin-top: 35px;
+                font-size: 0.85rem;
             }
 
             .project-link {
@@ -311,18 +305,12 @@
                 padding: 9px 22px;
             }
 
-            .contact {
-                margin-top: 35px;
-            }
-
             .contact a {
                 font-size: 1rem;
             }
 
             .footer {
-                font-size: 0.75rem;
-                bottom: 18px;
-                color: #666;
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -332,32 +320,36 @@
     <div id="particles-js"></div>
 
     <div class="main-container">
-        <div class="logo-container">
-            <img src="logo.svg" alt="O2Z Logo" class="logo-img">
+        <div class="logo-zone">
+            <div class="logo-container">
+                <img src="logo.svg" alt="O2Z Logo" class="logo-img">
+            </div>
         </div>
 
-        <div style="pointer-events: auto;">
-            <div class="slogan">Making Dreams Code True.</div>
+        <div class="content-zone">
+            <div style="pointer-events: auto;">
+                <div class="slogan">Making Dreams Code True.</div>
+            </div>
+
+            <p class="tagline">
+                A technology playground where innovation pushes the limits. <br>
+                Exploring. Engineering. Evolving.
+            </p>
+
+            <div class="projects">
+                <div class="projects-title">Products</div>
+                <a href="https://ludora.app/" target="_blank" rel="noopener" class="project-link">Ludora</a>
+            </div>
+
+            <div class="contact">
+                <div class="contact-title">Get in touch</div>
+                <a href="mailto:info@o2z.tech">info@o2z.tech</a>
+            </div>
         </div>
 
-        <p class="tagline">
-            A technology playground where innovation pushes the limits. <br>
-            Exploring. Engineering. Evolving.
-        </p>
-
-        <div class="projects">
-            <div class="projects-title">Products</div>
-            <a href="https://ludora.app/" target="_blank" rel="noopener" class="project-link">Ludora</a>
+        <div class="footer">
+            © 2025 O2Z <span class="separator">·</span> Omri Ozer
         </div>
-
-        <div class="contact">
-            <div class="contact-title">Get in touch</div>
-            <a href="mailto:info@o2z.tech">info@o2z.tech</a>
-        </div>
-    </div>
-
-    <div class="footer">
-        © 2025 O2Z <span class="separator">·</span> Omri Ozer
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
