@@ -601,7 +601,7 @@
     font-size: clamp(22px, 3.5vw, 38px);
     font-weight: 900;
     color: #fff;
-    margin-bottom: 12px;
+    margin-bottom: 56px;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
@@ -800,13 +800,13 @@
     <div style="text-align:center; margin-bottom:48px;">
       <div class="section-label">צרו קשר</div>
       <h2 class="section-title">מוכנים להתחיל?</h2>
-      <p class="section-subtitle" style="margin:0 auto;">מלאו את הפרטים ונציג מטעמנו יחזור אליכם לתיאום שיחת אפיון חינם. בלי התחייבויות, בלי לחצים.</p>
+      <p class="section-subtitle" style="margin:0 auto;">מלאו את הפרטים ונחזור אליכם לתיאום שיחת אפיון חינם. בלי התחייבויות, בלי לחצים.</p>
     </div>
 
     <div class="form-container">
       <div id="form-view">
         <h2>שלחו פרטים ונחזור אליכם</h2>
-        <p class="form-sub">נציג מטעמנו יחזור אליכם תוך 24 שעות לתיאום שיחת האפיון.</p>
+        <p class="form-sub">נחזור אליכם תוך 24 שעות לתיאום שיחת האפיון.</p>
 
         <form id="lead-form" action="/_forms/contact" method="POST" novalidate>
           <div class="form-group">
@@ -845,9 +845,9 @@
             <input type="text" name="_hp_website" tabindex="-1" autocomplete="off">
           </div>
 
-          <input type="hidden" name="_redirect" value="?success=1">
+          <input type="hidden" name="_redirect" value="/?success=1">
 
-          <button type="submit" class="form-submit">שלחו פרטים — אחזור אליכם בהקדם ✦</button>
+          <button type="submit" class="form-submit">שלחו פרטים — נחזור אליכם בהקדם ✦</button>
           <p class="privacy-note">🔒 הפרטים שלכם מוגנים ולא יועברו לצד שלישי</p>
         </form>
       </div>
@@ -855,7 +855,7 @@
       <div class="form-success" id="form-success">
         <div class="check">✅</div>
         <h3>הפרטים התקבלו בהצלחה!</h3>
-        <p>תודה רבה. נציג מטעם O2Z יחזור אליכם בתוך 24 שעות לתיאום שיחת האפיון החינמית שלכם.</p>
+        <p>תודה רבה. נחזור אליכם בתוך 24 שעות לתיאום שיחת האפיון החינמית שלכם.</p>
         <p style="margin-top:12px; color:rgba(0,229,255,0.75); font-size:14px;">בינתיים, חשבו מה הכי חשוב לכם לשפר בעסק — נגיע מוכנים. 🚀</p>
       </div>
     </div>
@@ -881,7 +881,9 @@
     const success = document.getElementById('form-success');
     success.style.display = 'block';
     success.style.animation = 'fadeInUp 0.6s ease forwards';
-    document.getElementById('registration').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      document.getElementById('registration').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
   }
 
   // Client-side validation before allowing native form submission
