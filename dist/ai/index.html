@@ -1,0 +1,931 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-family: 'Heebo', sans-serif; direction: rtl; }
+
+  body {
+    background: #0d2233;
+    color: #f0f8ff;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    background: radial-gradient(ellipse at 60% 0%, rgba(0,229,255,0.18) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(0,150,200,0.12) 0%, transparent 55%),
+                linear-gradient(180deg, #071722 0%, #0d2233 50%, #0a1e2d 100%);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(0,229,255,0.07) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,255,0.1);
+    border: 1px solid rgba(0,229,255,0.3);
+    color: #00e5ff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    letter-spacing: 0.03em;
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 58px);
+    font-weight: 900;
+    line-height: 1.2;
+    max-width: 860px;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #ffffff 0%, #a8e8f5 50%, #00e5ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero p {
+    font-size: clamp(15px, 2.2vw, 19px);
+    color: rgba(200,230,245,0.85);
+    max-width: 700px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #00e5ff, #0099cc);
+    color: #071722;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,229,255,0.35);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,229,255,0.5);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #00e5ff;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(0,229,255,0.4);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(0,229,255,0.08);
+    border-color: rgba(0,229,255,0.7);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(0,229,255,0.5);
+    font-size: 22px;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* ── Sections ── */
+  .section {
+    padding: 80px 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #00e5ff;
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(22px, 3.5vw, 36px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    color: rgba(200,230,245,0.7);
+    max-width: 640px;
+    line-height: 1.75;
+  }
+
+  /* ── About ── */
+  .about-wrapper {
+    background: linear-gradient(135deg, #0d2233 0%, #122d42 100%);
+    border-top: 1px solid rgba(0,229,255,0.12);
+    border-bottom: 1px solid rgba(0,229,255,0.12);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; gap: 32px; } }
+
+  .about-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(0,100,160,0.3));
+    border: 3px solid rgba(0,229,255,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    box-shadow: 0 0 60px rgba(0,229,255,0.2), inset 0 0 40px rgba(0,229,255,0.05);
+  }
+
+  .about-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #00e5ff;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .about-content p {
+    color: rgba(200,230,245,0.82);
+    font-size: 15.5px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    background: rgba(0,229,255,0.1);
+    border: 1px solid rgba(0,229,255,0.25);
+    color: #7ed8ef;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+
+  /* ── Consultation Banner ── */
+  .consult-banner {
+    background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(0,100,180,0.1));
+    border: 1px solid rgba(0,229,255,0.25);
+    border-radius: 20px;
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .consult-banner h3 {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .consult-banner p {
+    color: rgba(200,230,245,0.72);
+    font-size: 15px;
+    max-width: 520px;
+  }
+
+  .free-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #00e5ff, #0099dd);
+    color: #071722;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Services ── */
+  .services-wrapper {
+    background: #081828;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: #0d2233;
+    border-radius: 20px;
+    padding: 36px 32px;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .service-card:nth-child(1)::before { background: linear-gradient(90deg, #00e5ff, #0099dd); }
+  .service-card:nth-child(2)::before { background: linear-gradient(90deg, #7c3aed, #a855f7); }
+  .service-card:nth-child(3)::before { background: linear-gradient(90deg, #059669, #34d399); }
+
+  .service-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,229,255,0.25);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .service-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .service-number {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .service-card:nth-child(1) .service-number { color: #00e5ff; }
+  .service-card:nth-child(2) .service-number { color: #a855f7; }
+  .service-card:nth-child(3) .service-number { color: #34d399; }
+
+  .service-card h3 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .for-whom {
+    font-size: 13.5px;
+    color: rgba(200,230,245,0.6);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-style: italic;
+    border-right: 3px solid rgba(255,255,255,0.1);
+    padding-right: 12px;
+  }
+
+  .service-list {
+    list-style: none;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+
+  .service-list li {
+    font-size: 14px;
+    color: rgba(200,230,245,0.78);
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.55;
+  }
+
+  .service-list li:last-child { border-bottom: none; }
+
+  .service-list li::before {
+    content: '✦';
+    font-size: 10px;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+
+  .service-card:nth-child(1) .service-list li::before { color: #00e5ff; }
+  .service-card:nth-child(2) .service-list li::before { color: #a855f7; }
+  .service-card:nth-child(3) .service-list li::before { color: #34d399; }
+
+  .service-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .benefit-pill {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+
+  .service-card:nth-child(1) .benefit-pill { background: rgba(0,229,255,0.1); color: #00e5ff; border: 1px solid rgba(0,229,255,0.2); }
+  .service-card:nth-child(2) .benefit-pill { background: rgba(168,85,247,0.1); color: #c084fc; border: 1px solid rgba(168,85,247,0.25); }
+  .service-card:nth-child(3) .benefit-pill { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+
+  .service-cta {
+    display: block;
+    text-align: center;
+    padding: 13px;
+    border-radius: 10px;
+    font-family: 'Heebo', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: none;
+  }
+
+  .service-card:nth-child(1) .service-cta { background: rgba(0,229,255,0.12); color: #00e5ff; border: 1.5px solid rgba(0,229,255,0.3); }
+  .service-card:nth-child(1) .service-cta:hover { background: rgba(0,229,255,0.22); }
+
+  .service-card:nth-child(2) .service-cta { background: rgba(168,85,247,0.12); color: #c084fc; border: 1.5px solid rgba(168,85,247,0.3); }
+  .service-card:nth-child(2) .service-cta:hover { background: rgba(168,85,247,0.22); }
+
+  .service-card:nth-child(3) .service-cta { background: rgba(52,211,153,0.12); color: #34d399; border: 1.5px solid rgba(52,211,153,0.3); }
+  .service-card:nth-child(3) .service-cta:hover { background: rgba(52,211,153,0.22); }
+
+  /* ── Community ── */
+  .community-wrapper {
+    background: linear-gradient(135deg, #071722, #0d2233);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .community-card {
+    background: linear-gradient(135deg, rgba(255,167,38,0.06), rgba(255,80,80,0.04));
+    border: 1px solid rgba(255,167,38,0.2);
+    border-radius: 24px;
+    padding: 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .community-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: 50%; transform: translateX(-50%);
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,167,38,0.1), transparent 70%);
+    pointer-events: none;
+  }
+
+  .coming-soon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,167,38,0.15);
+    border: 1px solid rgba(255,167,38,0.35);
+    color: #ffa726;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .community-icon { font-size: 52px; margin-bottom: 16px; }
+
+  .community-card h3 {
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .community-card p {
+    color: rgba(200,230,245,0.72);
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  /* ── Form ── */
+  .form-wrapper {
+    background: linear-gradient(180deg, #0d2233, #071722);
+    border-top: 1px solid rgba(0,229,255,0.12);
+  }
+
+  .form-container {
+    background: #0d2233;
+    border: 1px solid rgba(0,229,255,0.18);
+    border-radius: 24px;
+    padding: 52px 48px;
+    max-width: 680px;
+    margin: 0 auto;
+    box-shadow: 0 0 80px rgba(0,229,255,0.05);
+  }
+
+  @media (max-width: 640px) { .form-container { padding: 36px 24px; } }
+
+  .form-container h2 {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .form-container .form-sub {
+    color: rgba(200,230,245,0.65);
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: rgba(200,230,245,0.85);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 13px 16px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    color: #fff;
+    direction: rtl;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .form-group input::placeholder { color: rgba(255,255,255,0.28); }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: rgba(0,229,255,0.5);
+    box-shadow: 0 0 0 3px rgba(0,229,255,0.1);
+  }
+
+  .form-group select option { background: #0d2233; color: #fff; }
+
+  .form-submit {
+    width: 100%;
+    margin-top: 8px;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 800;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #00e5ff, #0099cc);
+    color: #071722;
+    border: none;
+    cursor: pointer;
+    font-family: 'Heebo', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(0,229,255,0.3);
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,229,255,0.45);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .form-success .check { font-size: 56px; margin-bottom: 16px; }
+  .form-success h3 { font-size: 24px; font-weight: 800; color: #00e5ff; margin-bottom: 12px; }
+  .form-success p { color: rgba(200,230,245,0.75); font-size: 16px; }
+
+  .privacy-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: rgba(200,230,245,0.4);
+  }
+
+  /* ── Final CTA ── */
+  .final-cta {
+    background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(0,100,160,0.08));
+    border-top: 1px solid rgba(0,229,255,0.15);
+    text-align: center;
+    padding: 80px 24px;
+  }
+
+  .final-cta h2 {
+    font-size: clamp(22px, 3.5vw, 38px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 12px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+  }
+
+  .final-cta p {
+    color: rgba(200,230,245,0.65);
+    font-size: 16px;
+    margin-bottom: 36px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    background: #071722;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  footer .logo { font-size: 22px; font-weight: 900; color: #00e5ff; margin-bottom: 8px; }
+  footer p { color: rgba(200,230,245,0.4); font-size: 13px; }
+
+  /* ── Divider ── */
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00e5ff, transparent);
+    margin: 16px 0 24px;
+    border-radius: 2px;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+  .fade-up { animation: fadeInUp 0.7s ease forwards; }
+  .delay-1 { animation-delay: 0.15s; opacity: 0; }
+  .delay-2 { animation-delay: 0.3s; opacity: 0; }
+  .delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+  /* ── Error state ── */
+  .field-error { border-color: #ff5252 !important; }
+  .error-msg { color: #ff5252; font-size: 12px; margin-top: 4px; display: none; }
+</style>
+
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O2Z | AI לעסקים – ממילים למעשים</title>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">✦ מהפכת ה-AI לעסקים שלכם</div>
+  <h1 class="fade-up">ממילים למעשים —<br>שותפים לצמיחה בעידן ה-AI</h1>
+  <p class="fade-up delay-1">בעידן בו AI משנה את חוקי המשחק, אנחנו כאן כדי להפוך את המורכב לפשוט, את החזון למציאות ואת הטכנולוגיה ליתרון העסקי הברור שלכם.</p>
+  <div class="hero-ctas fade-up delay-2">
+    <a href="#registration" class="btn-primary">קבעו שיחת אפיון חינם ←</a>
+    <a href="#services" class="btn-ghost">גלו את השירותים</a>
+  </div>
+  <div class="hero-scroll">↓</div>
+</section>
+
+<!-- ── ABOUT ── -->
+<div class="about-wrapper">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div style="text-align:center;">
+          <div class="about-avatar">🤖</div>
+          <div class="about-name">עומרי עוזר | O2Z</div>
+          <div style="font-size:12px;color:rgba(200,230,245,0.45);margin-top:4px;">מייסד ומנכ"ל</div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-label">מי אנחנו</div>
+        <h2 class="section-title">הניסיון שמדבר בעד עצמו</h2>
+        <div class="divider"></div>
+        <p>ב-<strong style="color:#00e5ff;">O2Z</strong> מאמינים שהטכנולוגיה כאן כדי לשרת אתכם. ההדרכות מועברות על ידי <strong style="color:#fff;">עומרי עוזר</strong>, מייסד ומנכ"ל O2Z, בעל ניסיון עשיר בפיתוח ויישום פתרונות טכנולוגיים, כולל בינה מלאכותית מתקדמת.</p>
+        <p>עומרי מביא איתו ניסיון מעשי רב בישראל ובעולם, עם התמחות בבינה מלאכותית, פיתוח סוכני AI וכלים מתקדמים כמו Claude Code. מטרתנו — לצייד אתכם בידע ובכלים הפרקטיים ביותר ולהפוך את ה-AI ליתרון תחרותי אמיתי בעסק שלכם.</p>
+        <div class="about-tags">
+          <span class="tag">Claude Code</span>
+          <span class="tag">סוכני AI</span>
+          <span class="tag">אוטומציה</span>
+          <span class="tag">אסטרטגיית AI</span>
+          <span class="tag">ניסיון גלובלי</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CONSULTATION BANNER ── -->
+<div style="background:#081828; padding: 0 24px 60px;">
+  <div style="max-width:1100px; margin:0 auto; padding-top:60px;">
+    <div class="consult-banner">
+      <div>
+        <div class="free-badge">✦ ללא עלות</div>
+        <h3>שיחת אפיון ראשונית — נקודת הפתיחה שלכם לעתיד</h3>
+        <p>לפני כל צעד, נשב לשיחת אפיון קצרה בה נבין לעומק את האתגרים, הצרכים והיעדים הספציפיים של העסק שלכם. כך נוכל להתאים את הפתרון המושלם שיקפיץ אתכם קדימה.</p>
+      </div>
+      <a href="#registration" class="btn-primary" style="white-space:nowrap; flex-shrink:0;">קבעו עכשיו ←</a>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES ── -->
+<div class="services-wrapper" id="services">
+  <div class="section">
+    <div class="section-label">השירותים שלנו</div>
+    <h2 class="section-title">שלושה מסלולים, מטרה אחת: ה-AI עובד בשבילכם</h2>
+    <div class="section-subtitle">בחרו את הדרך שמתאימה לכם — אנחנו נתאים את הכל לצרכי העסק הספציפיים שלכם.</div>
+
+    <div class="services-grid">
+
+      <!-- Card 1 -->
+      <div class="service-card">
+        <div class="service-number">אופציה 01</div>
+        <div class="service-icon">⚡</div>
+        <h3>AI פתרון קצה<br><span style="font-weight:400;font-size:15px;">Done For You</span></h3>
+        <p class="for-whom">לבעלי עסקים שרוצים ליהנות מיתרונות ה-AI באופן מיידי, מבלי להשקיע זמן בלמידה או פיתוח פנימי.</p>
+        <ul class="service-list">
+          <li>ניתוח מעמיק של התהליך העסקי שברצונכם לייעל</li>
+          <li>פיתוח סוכן AI או תהליך אוטומטי מותאם אישית</li>
+          <li>הטמעה חלקה במערכות העבודה הקיימות שלכם</li>
+          <li>הדרכה תפעולית לכם ולצוות — קצרה ופשוטה</li>
+        </ul>
+        <div class="service-benefits">
+          <span class="benefit-pill">תוצאות מיידיות</span>
+          <span class="benefit-pill">חיסכון בזמן</span>
+          <span class="benefit-pill">פתרון מדויק</span>
+        </div>
+        <a href="#registration" class="service-cta">בנו לי פתרון AI מותאם ←</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="service-card">
+        <div class="service-number">אופציה 02</div>
+        <div class="service-icon">🎓</div>
+        <h3>AI מאסטר<br><span style="font-weight:400;font-size:15px;">Teach You How</span></h3>
+        <p class="for-whom">לבעלי עסקים וצוותים שרוצים לשלוט בכלי ה-AI ולבנות בעצמם סוכנים ותהליכים אוטומטיים.</p>
+        <ul class="service-list">
+          <li>סדנה אישית (1:1) מותאמת לרמת הידע והצרכים שלכם</li>
+          <li>בנייה משותפת של סוכן AI כמודל וכלי עבודה אמיתי</li>
+          <li>שיטות עבודה מתקדמות עם Claude Code ופרומפטים</li>
+          <li>ידע שנשאר אצלכם — לתמיד</li>
+        </ul>
+        <div class="service-benefits">
+          <span class="benefit-pill">עצמאות מלאה</span>
+          <span class="benefit-pill">ידע פנימי</span>
+          <span class="benefit-pill">גמישות</span>
+        </div>
+        <a href="#registration" class="service-cta">למדו אותי לבנות AI ←</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card">
+        <div class="service-number">אופציה 03</div>
+        <div class="service-icon">🚀</div>
+        <h3>AI שותף לצמיחה<br><span style="font-weight:400;font-size:15px;">Guide You</span></h3>
+        <p class="for-whom">לבעלי עסקים שרואים ב-AI אסטרטגיה ארוכת טווח ורוצים ליווי צמוד ותמיכה מתמשכת.</p>
+        <ul class="service-list">
+          <li>פגישות ייעוץ שוטפות לסקירת אתגרים והזדמנויות</li>
+          <li>גיבוש אסטרטגיית AI כוללת לעסק שלכם</li>
+          <li>פיתוח מתמשך ואופטימיזציה של תהליכים קיימים</li>
+          <li>מענה לשאלות, פתרון בעיות ושיפור ביצועים</li>
+        </ul>
+        <div class="service-benefits">
+          <span class="benefit-pill">יתרון תחרותי</span>
+          <span class="benefit-pill">חדשנות מתמדת</span>
+          <span class="benefit-pill">שקט נפשי</span>
+        </div>
+        <a href="#registration" class="service-cta">אני רוצה ליווי אסטרטגי ←</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── COMMUNITY ── -->
+<div class="community-wrapper">
+  <div class="section">
+    <div class="community-card">
+      <div class="coming-soon-badge">⏳ בקרוב</div>
+      <div class="community-icon">💬</div>
+      <h3>קהילת AI בלעדית לבעלי עסקים</h3>
+      <p>אנו מקימים קהילת ווטסאפ סגורה ובלעדית לבעלי עסקים שעברו הכשרה אצלנו. פלטפורמה לשיתוף ידע, התייעצויות הדדיות, נטוורקינג ולמידה מתמדת — כדי שתישארו תמיד בחזית ה-AI. <strong style="color:rgba(255,167,38,0.9);">הגישה לקהילה: לאחר השלמת הדרכה כלשהי.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ── REGISTRATION FORM ── -->
+<div class="form-wrapper" id="registration">
+  <div class="section" style="padding-bottom:100px;">
+    <div style="text-align:center; margin-bottom:48px;">
+      <div class="section-label">צרו קשר</div>
+      <h2 class="section-title">מוכנים להתחיל?</h2>
+      <p class="section-subtitle" style="margin:0 auto;">מלאו את הפרטים ונציג מטעמנו יחזור אליכם לתיאום שיחת אפיון חינם. בלי התחייבויות, בלי לחצים.</p>
+    </div>
+
+    <div class="form-container">
+      <div id="form-view">
+        <h2>שלחו פרטים ונחזור אליכם</h2>
+        <p class="form-sub">נציג מטעמנו יחזור אליכם תוך 24 שעות לתיאום שיחת האפיון.</p>
+
+        <form id="lead-form" action="/_forms/contact" method="POST" novalidate>
+          <div class="form-group">
+            <label for="full_name">שם מלא <span style="color:#ff5252">*</span></label>
+            <input type="text" id="full_name" name="full_name" placeholder="ישראל ישראלי">
+            <div class="error-msg" id="err_full_name">נא למלא שם מלא</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">אימייל <span style="color:#ff5252">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@company.com">
+            <div class="error-msg" id="err_email">נא למלא כתובת אימייל תקינה</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">טלפון <span style="color:#ff5252">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="050-0000000">
+            <div class="error-msg" id="err_phone">נא למלא מספר טלפון</div>
+          </div>
+
+          <div class="form-group">
+            <label for="service_of_interest">נושא התעניינות <span style="color:#ff5252">*</span></label>
+            <select id="service_of_interest" name="service_of_interest">
+              <option value="">-- בחרו שירות --</option>
+              <option value="initial_consultation">שיחת אפיון ראשונית</option>
+              <option value="done_for_you">AI פתרון קצה (Done For You)</option>
+              <option value="teach_you_how">AI מאסטר (Teach You How)</option>
+              <option value="guide_you">AI שותף לצמיחה (Guide You)</option>
+              <option value="community">קהילת AI (בקרוב)</option>
+            </select>
+            <div class="error-msg" id="err_service">נא לבחור נושא התעניינות</div>
+          </div>
+
+          <!-- honeypot — hidden from real users, catches bots -->
+          <div style="position:absolute;left:-9999px;aria-hidden:true">
+            <input type="text" name="_hp_website" tabindex="-1" autocomplete="off">
+          </div>
+
+          <input type="hidden" name="_redirect" value="?success=1">
+
+          <button type="submit" class="form-submit">שלחו פרטים — אחזור אליכם בהקדם ✦</button>
+          <p class="privacy-note">🔒 הפרטים שלכם מוגנים ולא יועברו לצד שלישי</p>
+        </form>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <div class="check">✅</div>
+        <h3>הפרטים התקבלו בהצלחה!</h3>
+        <p>תודה רבה. נציג מטעם O2Z יחזור אליכם בתוך 24 שעות לתיאום שיחת האפיון החינמית שלכם.</p>
+        <p style="margin-top:12px; color:rgba(0,229,255,0.75); font-size:14px;">בינתיים, חשבו מה הכי חשוב לכם לשפר בעסק — נגיע מוכנים. 🚀</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── FINAL CTA ── -->
+<div class="final-cta">
+  <h2>אל תחכו — התחילו את מהפכת ה-AI בעסק שלכם עוד היום!</h2>
+  <a href="#registration" class="btn-primary" style="font-size:17px; padding:16px 40px;">קבעו שיחת אפיון ראשונית ללא עלות ←</a>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="logo">O2Z</div>
+  <p>© 2026 O2Z | עומרי עוזר — AI לעסקים, ממילים למעשים</p>
+</footer>
+
+<script>
+  // Show success state if redirected back with ?success=1
+  if (new URLSearchParams(window.location.search).get('success') === '1') {
+    document.getElementById('form-view').style.display = 'none';
+    const success = document.getElementById('form-success');
+    success.style.display = 'block';
+    success.style.animation = 'fadeInUp 0.6s ease forwards';
+    document.getElementById('registration').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Client-side validation before allowing native form submission
+  document.getElementById('lead-form').addEventListener('submit', function(e) {
+    const fields = [
+      { id: 'full_name', errId: 'err_full_name', check: v => v.trim().length >= 2 },
+      { id: 'email', errId: 'err_email', check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
+      { id: 'phone', errId: 'err_phone', check: v => v.trim().length >= 9 },
+      { id: 'service_of_interest', errId: 'err_service', check: v => v !== '' }
+    ];
+
+    let valid = true;
+    fields.forEach(f => {
+      const el = document.getElementById(f.id);
+      const errEl = document.getElementById(f.errId);
+      const ok = f.check(el.value);
+      el.classList.toggle('field-error', !ok);
+      errEl.style.display = ok ? 'none' : 'block';
+      if (!ok) valid = false;
+    });
+
+    if (!valid) e.preventDefault();
+  });
+
+  // Clear error state on input
+  ['full_name', 'email', 'phone', 'service_of_interest'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('field-error');
+      const errEl = document.getElementById('err_' + id);
+      if (errEl) errEl.style.display = 'none';
+    });
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
