@@ -204,6 +204,46 @@
             box-shadow: 0 5px 20px rgba(0, 242, 255, 0.3);
         }
 
+        /* Services section */
+        .services {
+            pointer-events: auto;
+        }
+
+        .services-title {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            opacity: 1;
+        }
+
+        .services-desc {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+
+        .service-link {
+            display: inline-block;
+            font-size: 1.3rem;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 30px;
+            border: 2px solid rgba(0, 242, 255, 0.45);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background: rgba(0, 242, 255, 0.03);
+        }
+
+        .service-link:hover {
+            background: rgba(0, 242, 255, 0.12);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 242, 255, 0.25);
+        }
+
         /* Contact section */
         .contact {
             pointer-events: auto;
@@ -283,14 +323,18 @@
                 text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
             }
 
-            .projects-title {
+            .projects-title, .services-title {
                 font-size: 0.8rem;
                 margin-bottom: 12px;
             }
 
-            .project-link {
+            .project-link, .service-link {
                 font-size: 1rem;
                 padding: 10px 24px;
+            }
+
+            .services-desc {
+                font-size: 0.78rem;
             }
 
             .contact-title {
@@ -372,6 +416,14 @@
                 <div class="project-links">
                     <a href="https://omai.one/" target="_blank" rel="noopener" class="project-link">Omai</a>
                     <a href="https://ludora.app/" target="_blank" rel="noopener" class="project-link">Ludora</a>
+                </div>
+            </div>
+
+            <div class="services">
+                <div class="services-title">Services</div>
+                <div class="services-desc">AI training, custom solutions & strategic consulting for businesses</div>
+                <div class="project-links">
+                    <a href="https://ai.o2z.tech/" target="_blank" rel="noopener" class="service-link">AI for Business →</a>
                 </div>
             </div>
 

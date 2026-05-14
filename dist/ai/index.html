@@ -591,6 +591,105 @@
     color: rgba(200,230,245,0.4);
   }
 
+  /* ── Training Hub Banner ── */
+  .hub-wrapper {
+    background: #071722;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .hub-banner {
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(0,229,255,0.04));
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 44px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hub-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,229,255,0.2), transparent);
+  }
+
+  .hub-lock {
+    font-size: 40px;
+    margin-bottom: 12px;
+    opacity: 0.6;
+  }
+
+  .hub-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(200,230,245,0.4);
+    margin-bottom: 8px;
+  }
+
+  .hub-banner h3 {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 800;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .hub-banner p {
+    color: rgba(200,230,245,0.45);
+    font-size: 14.5px;
+    max-width: 500px;
+    line-height: 1.7;
+  }
+
+  .hub-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .hub-pill {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(200,230,245,0.4);
+  }
+
+  .hub-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 28px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.04);
+    color: rgba(200,230,245,0.45);
+    font-family: 'Heebo', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: default;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .hub-btn .lock-icon { font-size: 16px; }
+
+  @media (max-width: 640px) {
+    .hub-banner { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+  }
+
   /* ── Final CTA ── */
   .final-cta {
     background: linear-gradient(135deg, rgba(0,229,255,0.12), rgba(0,100,160,0.08));
@@ -655,8 +754,8 @@
   <title>O2Z | AI לעסקים – ממילים למעשים</title>
 
   <!-- SEO -->
-  <meta name="description" content="הדרכות AI, פתרונות AI מותאמים ואסטרטגיה טכנולוגית לעסקים. מפעיל AI לעסק שלכם – O2Z.">
-  <meta name="keywords" content="הדרכות AI, בינה מלאכותית לעסקים, ChatGPT, אוטומציה, Cursor, O2Z, עומרי עוזר, סדנאות AI, ליווי AI">
+  <meta name="description" content="הדרכות AI, פתרונות מותאמים, ליווי וייעוץ אסטרטגי לעסקים. O2Z – שותפים לצמיחה בעידן ה-AI.">
+  <meta name="keywords" content="הדרכות AI, בינה מלאכותית לעסקים, ChatGPT, אוטומציה, Cursor, O2Z, עומרי עוזר, סדנאות AI, ליווי AI, ייעוץ טכנולוגי, פתרונות AI מותאמים">
   <meta name="author" content="Omri Ozer | O2Z">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://ai.o2z.tech/">
@@ -667,7 +766,7 @@
   <meta property="og:site_name" content="O2Z">
   <meta property="og:locale" content="he_IL">
   <meta property="og:title" content="O2Z | AI לעסקים – ממילים למעשים">
-  <meta property="og:description" content="הדרכות AI, פתרונות מותאמים ואסטרטגיה טכנולוגית. O2Z – שותפים לצמיחה בעידן ה-AI.">
+  <meta property="og:description" content="הדרכות AI, פתרונות מותאמים, ליווי וייעוץ אסטרטגי לעסקים. O2Z – שותפים לצמיחה בעידן ה-AI.">
   <meta property="og:image" content="https://ai.o2z.tech/preview-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -851,6 +950,31 @@
   </div>
 </div>
 
+<!-- ── TRAINING HUB BANNER ── -->
+<div class="hub-wrapper">
+  <div class="section">
+    <div class="hub-banner">
+      <div>
+        <div class="hub-lock">🔒</div>
+        <div class="hub-label">ללקוחות קיימים</div>
+        <h3>מרכז ההדרכה שלכם</h3>
+        <p>לאחר תחילת העבודה המשותפת תקבלו גישה אישית למרכז ההדרכה — שם תמצאו את כל החומרים, המסמכים, הסילבוס והנכסים מהליווי שלנו, תמיד זמינים עבורכם.</p>
+        <div class="hub-features">
+          <span class="hub-pill">📄 מסמכי אפיון</span>
+          <span class="hub-pill">📚 סילבוס</span>
+          <span class="hub-pill">🎥 הקלטות</span>
+          <span class="hub-pill">📁 נכסי פרויקט</span>
+          <span class="hub-pill">🤖 פרומפטים שמורים</span>
+        </div>
+      </div>
+      <div class="hub-btn">
+        <span class="lock-icon">🔒</span>
+        כניסה ללקוחות בלבד
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ── REGISTRATION FORM ── -->
 <div class="form-wrapper" id="registration">
   <div class="section" style="padding-bottom:100px;">
@@ -928,6 +1052,10 @@
 <footer>
   <div class="logo">O2Z</div>
   <p>© 2026 O2Z | עומרי עוזר — AI לעסקים, ממילים למעשים</p>
+  <p style="margin-top:10px; font-size:12px; color:rgba(200,230,245,0.25);">
+    שירות של <a href="https://o2z.tech" style="color:rgba(0,229,255,0.45); text-decoration:none;" target="_blank" rel="noopener">O2Z</a>
+    — פלטפורמת מוצרים וייעוץ טכנולוגי
+  </p>
 </footer>
 
 <script>
